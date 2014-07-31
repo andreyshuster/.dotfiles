@@ -6,6 +6,35 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+(defvar required-packages
+  '(
+    auto-complete
+    autopair
+    js3-mode
+    web-mode
+    emmet-mode
+    ido-ubiquitous
+    ido-vertical-mode
+    color-theme
+    color-theme-molokai
+    ) "a list of packages to install")
+; method to check if all packages are installed
+(defun packages-installed-p ()
+  (loop for p in required-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+
+; if not all packages are installed, check one by one and install the missing ones.
+(unless (packages-installed-p)
+					; check for new packages (package versions)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+					; install the missing packages
+  (dolist (p required-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
 (global-auto-complete-mode t)
 
 (ido-mode 1)
@@ -45,10 +74,16 @@
 ;; misc settings
 (fset 'yes-or-no-p 'y-or-n-p)
 ;(normal-erase-is-backspace-mode 1)
-(mouse-wheel-mode t)
+;(mouse-wheel-mode t)
 (windmove-default-keybindings 'meta) 
-(scroll-bar-mode -1)
+;(scroll-bar-mode -1)
 (menu-bar-mode -99)
+;; Remove scrollbars, menu bars, and toolbars
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+
 
 (setq scroll-step 1) 
 (setq mac-option-modifier 'none)

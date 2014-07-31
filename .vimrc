@@ -29,8 +29,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-Bundle 'fatih/vim-go'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'fatih/vim-go'
+"Bundle 'Valloric/YouCompleteMe'
 silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install -g jshint; cd -; }
 
 filetype plugin indent on
