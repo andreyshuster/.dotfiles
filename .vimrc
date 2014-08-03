@@ -29,6 +29,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
+Bundle 'altercation/vim-colors-solarized'
 "Bundle 'fatih/vim-go'
 "Bundle 'Valloric/YouCompleteMe'
 silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install -g jshint; cd -; }
@@ -38,3 +39,4 @@ filetype plugin indent on
 source ~/.vim/vimrc
 colorscheme molokai
 let g:molokai_original=1
+syntax enable

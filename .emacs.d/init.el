@@ -13,6 +13,7 @@
     js3-mode
     web-mode
     emmet-mode
+	jedi
     ido-ubiquitous
     ido-vertical-mode
     color-theme
@@ -42,17 +43,25 @@
 
 (autopair-global-mode)
 
-;; emmet
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
-
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (setq web-mode-engines-alist
       '(("django"    . "\\.html\\'")
 	))
+
+;; emmet
+(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
 ;; js3-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
+
+;; python-mode
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
 
 ;; font settings
 (set-default-font "Consolas")
@@ -77,13 +86,11 @@
 ;(mouse-wheel-mode t)
 (windmove-default-keybindings 'meta) 
 ;(scroll-bar-mode -1)
-(menu-bar-mode -99)
+;(menu-bar-mode -99)
 ;; Remove scrollbars, menu bars, and toolbars
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-
 
 (setq scroll-step 1) 
 (setq mac-option-modifier 'none)
