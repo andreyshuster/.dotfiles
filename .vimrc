@@ -19,6 +19,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 """
 Bundle 'kien/ctrlp.vim'
+Bundle 'klen/python-mode'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/emmet-vim'
@@ -40,3 +41,8 @@ source ~/.vim/vimrc
 colorscheme molokai
 let g:molokai_original=1
 syntax enable
+" Color scheme solarized
+" set t_Co=256
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized"
