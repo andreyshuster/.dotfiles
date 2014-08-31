@@ -9,7 +9,6 @@
 (defvar required-packages
   '(
     auto-complete
-    autopair
     js3-mode
     web-mode
     emmet-mode
@@ -18,6 +17,7 @@
     ido-vertical-mode
     color-theme
     color-theme-molokai
+	ample-zen
     ) "a list of packages to install")
 ; method to check if all packages are installed
 (defun packages-installed-p ()
@@ -41,8 +41,6 @@
 (ido-mode 1)
 (ido-vertical-mode 1)
 
-(autopair-global-mode)
-
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (setq web-mode-engines-alist
@@ -56,6 +54,7 @@
 
 ;; js3-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
+(add-hook 'js3-mode-hook 'auto-complete-mode)
 
 ;; python-mode
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -74,9 +73,9 @@
 (global-linum-mode)
 
 ;; highlighted line
-(defface hl-line '((t (:background "DarkSlateGrey")))
-  "Face to use for `hl-line-face'." :group 'hl-line)
-(setq hl-line-face 'hl-line)
+;; (defface hl-line '((t (:background "DarkSlateGrey")))
+;;   "Face to use for `hl-line-face'." :group 'hl-line)
+;; (setq hl-line-face 'hl-line)
 (global-hl-line-mode 1)
 (setq global-visual-line-mode t)
 
@@ -104,5 +103,20 @@
 ;; key bindings
 (global-set-key [f1] 'ibuffer)
 
-(color-theme-molokai)
+;(color-theme-molokai)
 ;(load-theme 'tsdh-dark)
+;(load-theme 'tango)
+(load-theme 'ample-zen)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
