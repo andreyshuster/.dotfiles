@@ -17,7 +17,7 @@
     ido-vertical-mode
     color-theme
     color-theme-molokai
-	ample-zen
+	ample-zen-theme
     ) "a list of packages to install")
 ; method to check if all packages are installed
 (defun packages-installed-p ()
