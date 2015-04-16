@@ -319,3 +319,5 @@ autocmd BufReadPost fugitive://*
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
+au BufRead,BufNewFile *.md set filetype=markdown
+

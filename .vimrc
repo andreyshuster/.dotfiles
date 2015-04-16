@@ -31,6 +31,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'altercation/vim-colors-solarized'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 "Bundle 'fatih/vim-go'
 "Bundle 'Valloric/YouCompleteMe'
 silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install -g jshint; cd -; }
