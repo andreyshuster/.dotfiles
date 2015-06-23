@@ -44,19 +44,21 @@ PATH=$PATH:/usr/local/share/npm/bin
 # Customize to your needs...
 alias tmux="tmux -u"
 alias vim="/usr/local/bin/vim"
+alias emacs="/usr/local/bin/emacs"
 export TERM=screen-256color
 
 export LC_ALL=en_US.UTF-8
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export GOPATH=$HOME/Projects/Go
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/Projects
+#export GOPATH=$HOME/Projects/Go
+#source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH=/usr/local/bin:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
-source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
+#source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
+#source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
+eval "$(rbenv init -)"

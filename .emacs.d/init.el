@@ -47,14 +47,27 @@
       '(("django"    . "\\.html\\'")
 	))
 
+
 ;; emmet
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
+;;web mode
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-enable-auto-pairing t)
+
+;; js2-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
 ;; js3-mode
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
-(add-hook 'js3-mode-hook 'auto-complete-mode)
+;(add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
+;(add-hook 'js3-mode-hook 'auto-complete-mode)
 
 ;; python-mode
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -82,6 +95,7 @@
 ;; misc settings
 (fset 'yes-or-no-p 'y-or-n-p)
 (normal-erase-is-backspace-mode 1)
+(setq ns-right-alternate-modifier nil)
 ;(mouse-wheel-mode t)
 (windmove-default-keybindings 'meta) 
 ;(scroll-bar-mode -1)
@@ -115,7 +129,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default))))
+	("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+ '(js2-basic-offset 2)
+ '(package-selected-packages
+   (quote
+	(js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
