@@ -47,7 +47,6 @@
       '(("django"    . "\\.html\\'")
 	))
 
-
 ;; emmet
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
@@ -62,7 +61,9 @@
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js-mode-hook 'auto-complete-mode)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;; js3-mode
@@ -86,9 +87,6 @@
 (global-linum-mode)
 
 ;; highlighted line
-;; (defface hl-line '((t (:background "DarkSlateGrey")))
-;;   "Face to use for `hl-line-face'." :group 'hl-line)
-;; (setq hl-line-face 'hl-line)
 (global-hl-line-mode 1)
 (setq global-visual-line-mode t)
 
@@ -99,7 +97,6 @@
 ;(mouse-wheel-mode t)
 (windmove-default-keybindings 'meta) 
 ;(scroll-bar-mode -1)
-;(menu-bar-mode -99)
 ;; Remove scrollbars, menu bars, and toolbars
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -133,7 +130,7 @@
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-	(js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+	(flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

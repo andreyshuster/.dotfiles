@@ -36,7 +36,8 @@ plugins=(git) # rvm rails ruby gem bundler)
 source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/usr/local/share/npm/bin
+PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # [[ $- != *i* ]] && return
 # [[ $TERM != screen* ]] && exec tmux -u
