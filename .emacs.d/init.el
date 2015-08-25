@@ -42,10 +42,7 @@
 (ido-vertical-mode 1)
 
 ;; web mode
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(setq web-mode-engines-alist
-      '(("django"    . "\\.html\\'")
-	))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 
 ;; emmet
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
@@ -60,7 +57,7 @@
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js-mode-hook 'auto-complete-mode)
@@ -77,8 +74,8 @@
 (setq-default py-which-bufname "IPython")
 
 ;; font settings
-(set-default-font "Consolas")
-(set-face-attribute 'default nil :height 110) 
+(set-default-font "Monaco")
+(set-face-attribute 'default nil :height 150) 
 (setq-default line-spacing 1)
 ;; linum
 (linum-mode t)
@@ -91,6 +88,7 @@
 (setq global-visual-line-mode t)
 
 ;; misc settings
+(powerline-default-theme)
 (fset 'yes-or-no-p 'y-or-n-p)
 (normal-erase-is-backspace-mode 1)
 (setq ns-right-alternate-modifier nil)
@@ -103,10 +101,10 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (setq scroll-step 1) 
-(setq mac-option-modifier 'none)
+;(setq mac-option-modifier 'none)
 ;; tabs
 (setq-default tab-width 4)
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
 
 ;;autofill disable
 (auto-fill-mode -1)
@@ -117,7 +115,10 @@
 ;(color-theme-molokai)
 ;(load-theme 'tsdh-dark)
 ;(load-theme 'tango)
-(load-theme 'ample-zen)
+;(load-theme 'ample-zen)
+(load-theme 'solarized);
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -126,11 +127,12 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+ '(default-input-method "russian-computer")
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-	(flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
