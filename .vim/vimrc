@@ -27,6 +27,7 @@ set wrap        "dont wrap lines
 set linebreak   "wrap lines at convenient points
 set cursorline 
 
+set gfn=Monaco:h14
 if v:version >= 703
     "undo settings
     set undodir=~/.vim/undofiles

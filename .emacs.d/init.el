@@ -19,7 +19,7 @@
     color-theme-molokai
 	ample-zen-theme
     ) "a list of packages to install")
-; method to check if all packages are installed
+										; method to check if all packages are installed
 (defun packages-installed-p ()
   (loop for p in required-packages
         when (not (package-installed-p p)) do (return nil)
@@ -77,8 +77,8 @@
 (setq-default py-which-bufname "IPython")
 
 ;; font settings
-(set-default-font "Consolas")
-(set-face-attribute 'default nil :height 110) 
+(set-default-font "Monaco")
+(set-face-attribute 'default nil :height 150) 
 (setq-default line-spacing 1)
 ;; linum
 (linum-mode t)
@@ -98,12 +98,12 @@
 (windmove-default-keybindings 'meta) 
 ;(scroll-bar-mode -1)
 ;; Remove scrollbars, menu bars, and toolbars
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;;(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;;(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (setq scroll-step 1) 
-(setq mac-option-modifier 'none)
+;;(setq mac-option-modifier 'none)
 ;; tabs
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
@@ -117,7 +117,8 @@
 ;(color-theme-molokai)
 ;(load-theme 'tsdh-dark)
 ;(load-theme 'tango)
-(load-theme 'ample-zen)
+;;(load-theme 'ample-zen)
+(load-theme 'solarized)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -126,7 +127,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+	("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
