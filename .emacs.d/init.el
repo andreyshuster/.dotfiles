@@ -10,6 +10,9 @@
   '(
     auto-complete
     js3-mode
+    js2-mode
+    jsx-mode
+    json-mode
     web-mode
     emmet-mode
 	jedi
@@ -18,6 +21,9 @@
     color-theme
     color-theme-molokai
 	ample-zen-theme
+    color-theme-solarized
+    powerline
+    neotree
     ) "a list of packages to install")
 ; method to check if all packages are installed
 (defun packages-installed-p ()
@@ -88,6 +94,9 @@
 (setq global-visual-line-mode t)
 
 ;; misc settings
+(setq visible-bell 1)
+;;(setq ring-bell-function 'ignore)
+
 (powerline-default-theme)
 (fset 'yes-or-no-p 'y-or-n-p)
 (normal-erase-is-backspace-mode 1)
@@ -111,11 +120,8 @@
 
 ;; key bindings
 (global-set-key [f1] 'ibuffer)
+(global-set-key [f2] 'neotree-toggle)
 
-;(color-theme-molokai)
-;(load-theme 'tsdh-dark)
-;(load-theme 'tango)
-;(load-theme 'ample-zen)
 (load-theme 'solarized);
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -132,7 +138,7 @@
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-    (powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
