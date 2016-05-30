@@ -69,9 +69,10 @@
 (add-hook 'js-mode-hook 'auto-complete-mode)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
-;; js3-mode
-;(add-to-list 'auto-mode-alist '("\\.js\\'" . js3-mode))
-;(add-hook 'js3-mode-hook 'auto-complete-mode)
+;; specific for Rails
+(add-to-list 'auto-mode-alist '("\\.js.erb\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.css.erb\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
 
 ;; python-mode
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -121,8 +122,14 @@
 ;; key bindings
 (global-set-key [f1] 'ibuffer)
 (global-set-key [f2] 'neotree-toggle)
-
-(load-theme 'solarized);
+(global-set-key [f8] 'remove-dos-eol)
+(load-theme 'solarized)
+;(color-theme-molokai)
+(defun remove-dos-eol ()
+  "Do not show ^M in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -133,7 +140,10 @@
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
  '(default-input-method "russian-computer")
- '(js2-basic-offset 2)
+ '(neo-click-changes-root t)
+ '(neo-create-file-auto-open nil)
+ '(neo-mode-line-type (quote neotree))
+ '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
     (dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
