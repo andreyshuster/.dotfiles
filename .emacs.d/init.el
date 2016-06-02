@@ -123,7 +123,12 @@
 (global-set-key [f1] 'ibuffer)
 (global-set-key [f2] 'neotree-toggle)
 (global-set-key [f8] 'remove-dos-eol)
-(load-theme 'solarized)
+
+(if (display-graphic-p) 
+      (load-theme 'solarized) 
+        (color-theme-molokai))
+
+;(load-theme 'solarized)
 ;(color-theme-molokai)
 (defun remove-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
