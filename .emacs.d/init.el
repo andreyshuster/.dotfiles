@@ -22,6 +22,8 @@
     color-theme
     color-theme-molokai
 	ample-zen-theme
+    color-theme-tango
+    color-theme-tangotango
     color-theme-solarized
     powerline
     neotree
@@ -56,7 +58,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x f") 'helm-find-files)
-(global-set-key (kbd "C-x o") 'helm-occur)
+(global-set-key (kbd "C-x C-o") 'helm-occur)
 
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
@@ -157,11 +159,9 @@
 (global-set-key [f8] 'remove-dos-eol)
 
 (if (display-graphic-p) 
-      (load-theme 'solarized) 
-        (color-theme-molokai))
+      (load-theme 'tangotango) ;sanityinc-solarized-light) 
+        (load-theme 'tangotango))
 
-;(load-theme 'solarized)
-;(color-theme-molokai)
 (defun remove-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
@@ -175,7 +175,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+    ("5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
  '(default-input-method "russian-computer")
  '(neo-click-changes-root t)
  '(neo-create-file-auto-open nil)
