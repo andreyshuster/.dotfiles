@@ -56,6 +56,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x f") 'helm-find-files)
+(global-set-key (kbd "C-x o") 'helm-occur)
 
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
