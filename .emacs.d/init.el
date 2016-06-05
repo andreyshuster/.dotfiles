@@ -28,19 +28,20 @@
     powerline
     neotree
     ) "a list of packages to install")
-										; method to check if all packages are installed
+
+;; method to check if all packages are installed
 (defun packages-installed-p ()
   (loop for p in required-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
-; if not all packages are installed, check one by one and install the missing ones.
+;; if not all packages are installed, check one by one and install the missing ones.
 (unless (packages-installed-p)
-					; check for new packages (package versions)
+  ;; check for new packages (package versions)
   (message "%s" "Emacs is now refreshing its package database...")
   (package-refresh-contents)
   (message "%s" " done.")
-					; install the missing packages
+  ;; install the missing packages
   (dolist (p required-packages)
     (when (not (package-installed-p p))
       (package-install p))))
@@ -159,8 +160,8 @@
 (global-set-key [f8] 'remove-dos-eol)
 
 (if (display-graphic-p) 
-      (load-theme 'tangotango) ;sanityinc-solarized-light) 
-        (load-theme 'tangotango))
+      (load-theme 'tangotango t) ;sanityinc-solarized-light) 
+        (load-theme 'tangotango t))
 
 (defun remove-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
