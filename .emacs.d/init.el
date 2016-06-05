@@ -154,6 +154,9 @@
 ;;autofill disable
 (auto-fill-mode -1)
 
+;; autocomplete
+(ac-config-default)
+
 ;; key bindings
 (global-set-key [f1] 'ibuffer)
 (global-set-key [f2] 'neotree-toggle)
