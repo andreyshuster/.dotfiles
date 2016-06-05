@@ -46,6 +46,7 @@ PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:
 alias tmux="tmux -u"
 alias vim="/usr/local/bin/vim"
 alias emacs="/usr/local/bin/emacs"
+alias emacsnw="emacs -nw"
 export TERM=screen-256color
 
 export LC_ALL=en_US.UTF-8
@@ -62,4 +63,4 @@ export PATH=/usr/local/bin:$PATH
 # The next line updates PATH for the Google Cloud SDK.
 #source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
 #source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
