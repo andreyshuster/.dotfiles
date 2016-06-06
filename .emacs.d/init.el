@@ -19,6 +19,8 @@
     ido-ubiquitous
     ido-vertical-mode
     helm
+    projectile
+    helm-projectile
     color-theme
     color-theme-molokai
 	ample-zen-theme
@@ -48,6 +50,9 @@
 
 (global-auto-complete-mode t)
 
+(projectile-global-mode)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
+
 (require 'helm)
 (require 'helm-config)
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
@@ -58,7 +63,6 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x f") 'helm-find-files)
 (global-set-key (kbd "C-x C-o") 'helm-occur)
 
 (setq helm-buffers-fuzzy-matching t
