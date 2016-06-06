@@ -165,6 +165,7 @@
 ;; key bindings
 (global-set-key [f1] 'ibuffer)
 (global-set-key [f2] 'neotree-toggle)
+(global-set-key [f3] 'shell)
 (global-set-key [f8] 'remove-dos-eol)
 
 (if (display-graphic-p) 
