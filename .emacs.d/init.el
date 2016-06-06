@@ -23,12 +23,11 @@
     helm-projectile
     color-theme
     color-theme-molokai
-	ample-zen-theme
-    color-theme-tango
     color-theme-tangotango
     color-theme-solarized
     powerline
     neotree
+    nyan-mode
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -50,9 +49,11 @@
 
 (global-auto-complete-mode t)
 
+;; projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 
+;; helm
 (require 'helm)
 (require 'helm-config)
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
