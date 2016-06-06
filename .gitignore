@@ -5,3 +5,4 @@
 *.dat
 *.last
 .emacs.d/.python-environments
+.emacs.d/projectile-bookmarks.eld
