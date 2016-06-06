@@ -23,7 +23,7 @@
     helm-projectile
     color-theme
     color-theme-molokai
-    color-theme-tangotango
+    tangotango-theme
     color-theme-solarized
     powerline
     neotree
