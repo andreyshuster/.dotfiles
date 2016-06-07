@@ -1,3 +1,16 @@
+;; to load all modules
+(defconst user-init-dir
+  (cond ((boundp 'user-emacs-directory)
+         user-emacs-directory)
+        ((boundp 'user-init-directory)
+         user-init-directory)
+        (t "~/.emacs.d/")))
+
+(defun load-user-file (file)
+  (interactive "f")
+  "Load a file in current user's configuration directory"
+  (load-file (expand-file-name file user-init-dir)))
+
 (require 'cl)
 (require 'package)
 (add-to-list 'package-archives
@@ -28,6 +41,7 @@
     powerline
     neotree
     nyan-mode
+    rainbow-mode
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -49,10 +63,6 @@
 
 (global-auto-complete-mode t)
 
-;; projectile
-(projectile-global-mode)
-(global-set-key (kbd "C-x f") 'projectile-find-file)
-
 ;; helm
 (require 'helm)
 (require 'helm-config)
@@ -61,10 +71,6 @@
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-o") 'helm-occur)
 
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
@@ -94,6 +100,9 @@
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
+;; rainbow
+(add-hook 'css-mode-hook 'rainbow-mode)
 
 ;;web mode
 (setq web-mode-markup-indent-offset 2)
@@ -143,7 +152,6 @@
 (normal-erase-is-backspace-mode 1)
 (setq ns-right-alternate-modifier nil)
 ;(mouse-wheel-mode t)
-(windmove-default-keybindings 'meta) 
 ;(scroll-bar-mode -1)
 ;; Remove scrollbars, menu bars, and toolbars
 ;;(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -162,11 +170,7 @@
 ;; autocomplete
 (ac-config-default)
 
-;; key bindings
-(global-set-key [f1] 'ibuffer)
-(global-set-key [f2] 'neotree-toggle)
-(global-set-key [f3] 'shell)
-(global-set-key [f8] 'remove-dos-eol)
+(global-prettify-symbols-mode)
 
 (if (display-graphic-p) 
       (load-theme 'tangotango t) ;sanityinc-solarized-light) 
@@ -177,6 +181,9 @@
   (interactive)
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
+
+;; load individual modules
+(load-user-file "keys.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
