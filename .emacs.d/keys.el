@@ -5,6 +5,7 @@
 (global-set-key [f1] 'ibuffer)
 (global-set-key [f2] 'neotree-toggle)
 (global-set-key [f3] 'ansi-term)
+(global-set-key [f4] 'slime)
 (global-set-key [f8] 'remove-dos-eol)
 
 ;; helm

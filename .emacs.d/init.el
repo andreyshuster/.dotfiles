@@ -149,6 +149,8 @@
 (load-user-file "helpers.el")
 ;; load individual modules
 (load-user-file "keys.el")
+;; sbcl
+(load-user-file "clisp.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
