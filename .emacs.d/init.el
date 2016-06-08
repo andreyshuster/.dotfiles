@@ -61,8 +61,6 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(global-auto-complete-mode t)
-
 (load-user-file "helm.el")
 (load-user-file "ido.el")
 
@@ -110,11 +108,7 @@
 (linum-mode t)
 (setq linum-format "%4d ")
 (set-face-attribute 'linum nil :background "#000")
-(global-linum-mode)
 
-;; highlighted line
-(global-hl-line-mode 1)
-(setq global-visual-line-mode t)
 
 ;; misc settings
 (setq visible-bell 1)
@@ -143,12 +137,14 @@
 ;; autocomplete
 (ac-config-default)
 
-(global-prettify-symbols-mode)
 
+;; different themes if started in terminal or gui
 (if (display-graphic-p) 
       (load-theme 'tangotango t) ;sanityinc-solarized-light) 
         (load-theme 'tangotango t))
 
+;; globals
+(load-user-file "globals.el")
 ;; different functions helpers
 (load-user-file "helpers.el")
 ;; load individual modules
