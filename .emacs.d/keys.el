@@ -11,7 +11,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-o") 'helm-occur)
-
+(global-set-key (kbd "C-x C-g") 'helm-projectile-grep)
 ;; projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
