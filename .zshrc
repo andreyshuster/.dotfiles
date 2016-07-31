@@ -51,14 +51,19 @@ export TERM=screen-256color
 
 export LC_ALL=en_US.UTF-8
 
+export VISUAL='emacs -nw'
+export EDITOR="$VISUAL"
+
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+export NODE_PATH='/usr/local/lib/node_modules'
 
 #export WORKON_HOME=$HOME/.virtualenvs
 #export PROJECT_HOME=$HOME/Projects
 #export GOPATH=$HOME/Projects/Go
 #source /usr/local/bin/virtualenvwrapper.sh
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/Users/andreyshuster/small-tools:/usr/local/bin:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 #source '/Users/novus42/google-cloud-sdk/path.zsh.inc'

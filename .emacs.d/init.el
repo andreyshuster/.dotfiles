@@ -1,4 +1,4 @@
-;; to load all modules
+;; to load separate files as modules
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory)
          user-emacs-directory)
@@ -42,6 +42,8 @@
     neotree
     nyan-mode
     rainbow-mode
+    tide
+    company
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -143,6 +145,7 @@
       (load-theme 'tangotango t) ;sanityinc-solarized-light) 
         (load-theme 'tangotango t))
 
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 ;; globals
 (load-user-file "globals.el")
 ;; different functions helpers
@@ -151,6 +154,8 @@
 (load-user-file "keys.el")
 ;; sbcl
 (load-user-file "clisp.el")
+;; typescript
+(load-user-file "typescript.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
