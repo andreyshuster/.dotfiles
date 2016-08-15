@@ -65,7 +65,10 @@ export NODE_PATH='/usr/local/lib/node_modules'
 
 export PATH=/Users/andreyshuster/small-tools:/usr/local/bin:$PATH
 
-# The next line updates PATH for the Google Cloud SDK.
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+ #The next line updates PATH for the Google Cloud SDK.
 #source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
 #source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
 #eval "$(rbenv init -)"
