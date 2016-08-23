@@ -1,5 +1,6 @@
 ;; common
 ;; key bindings
+;;; Code:
 (windmove-default-keybindings 'meta) 
 
 (global-set-key [f1] 'ibuffer)
@@ -16,4 +17,5 @@
 ;; projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
+(global-set-key (kbd "C-x p") 'projectile-switch-project)
 
