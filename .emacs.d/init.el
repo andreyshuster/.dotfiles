@@ -66,6 +66,8 @@
 (load-user-file "helm.el")
 (load-user-file "ido.el")
 
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 
@@ -156,6 +158,10 @@
 (load-user-file "clisp.el")
 ;; typescript
 (load-user-file "typescript.el")
+
+;; custom fb2-mode
+(add-to-list 'load-path "~/.dotfiles/.emacs.d/custom/fb2-mode")
+(require 'fb2-mode)
 
 ;; flycheck
 ;; http://www.flycheck.org/manual/latest/index.html
