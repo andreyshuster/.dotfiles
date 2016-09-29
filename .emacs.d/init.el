@@ -68,8 +68,13 @@
 
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 
+;; org mode
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 ;; web mode
-(add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;; emmet
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
@@ -116,7 +121,7 @@
 
 ;; misc settings
 (setq visible-bell 1)
-;;(setq ring-bell-function 'ignore)
+(setq ring-bell-function 'ignore)
 
 (powerline-default-theme)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -182,7 +187,6 @@
   (append flycheck-disabled-checkers
     '(json-jsonlist)))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -200,7 +204,9 @@
  '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
-    (dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl
+             flx-ido json-reformat json-mode js2-mode color-theme-solarized
+             rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

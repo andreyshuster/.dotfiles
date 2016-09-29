@@ -34,6 +34,8 @@ Bundle 'altercation/vim-colors-solarized'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Bundle 'mhinz/vim-startify'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 "Bundle 'fatih/vim-go'
 "Bundle 'Valloric/YouCompleteMe'
 silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install -g jshint; cd -; }
