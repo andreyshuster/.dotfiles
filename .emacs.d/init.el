@@ -1,4 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
 ;; to load separate files as modules
+;;; Code:
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory)
          user-emacs-directory)
@@ -97,7 +100,30 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js-mode-hook 'auto-complete-mode)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
+ '(default-input-method "russian-computer")
+ '(js-indent-level 2)
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p nil)
+ '(js2-strict-missing-semi-warning nil)
+ '(neo-click-changes-root t)
+ '(neo-create-file-auto-open nil)
+ '(neo-mode-line-type (quote neotree))
+ '(neo-theme (quote nerd))
+ '(package-selected-packages
+   (quote
+    (vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 
+;; Vue.js
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+             
 ;; specific for Rails
 (add-to-list 'auto-mode-alist '("\\.js.erb\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.css.erb\\'" . css-mode))
@@ -162,7 +188,7 @@
 ;; sbcl
 (load-user-file "clisp.el")
 ;; typescript
-(load-user-file "typescript.el")
+;;(load-user-file "typescript.el")
 
 ;; custom fb2-mode
 (add-to-list 'load-path "~/.dotfiles/.emacs.d/custom/fb2-mode")
@@ -187,26 +213,7 @@
   (append flycheck-disabled-checkers
     '(json-jsonlist)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
- '(default-input-method "russian-computer")
- '(js2-basic-offset 2)
- '(js2-strict-missing-semi-warning nil)
- '(neo-click-changes-root t)
- '(neo-create-file-auto-open nil)
- '(neo-mode-line-type (quote neotree))
- '(neo-theme (quote nerd))
- '(package-selected-packages
-   (quote
-    (dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl
-             flx-ido json-reformat json-mode js2-mode color-theme-solarized
-             rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
