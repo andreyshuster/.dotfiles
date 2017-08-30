@@ -72,3 +72,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 #source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
 #source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
 #eval "$(rbenv init -)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

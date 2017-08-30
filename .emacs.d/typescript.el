@@ -32,7 +32,7 @@
               (setup-tide-mode))))
 
 ;; Javascript
-(add-hook 'js2-mode-hook #'setup-tide-mode)
+;;(add-hook 'js2-mode-hook #'setup-tide-mode)
 
 ;; JSX
 (require 'web-mode)

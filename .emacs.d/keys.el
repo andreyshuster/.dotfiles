@@ -8,9 +8,12 @@
 (global-set-key [f2] 'neotree-toggle)
 (global-set-key [f3] 'ansi-term)
 (global-set-key [f4] 'slime)
-(global-set-key [f8] 'remove-dos-eol)
 (global-set-key [f5] 'rjsx-mode)
 (global-set-key [f6] 'whitespace-mode)
+
+(global-set-key [f8] 'remove-dos-eol)
+
+(global-set-key [f12] 'tomatinho)
 ;; helm
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
