@@ -120,7 +120,7 @@
  '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 
 ;; Vue.js
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
