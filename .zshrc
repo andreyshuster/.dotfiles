@@ -36,7 +36,7 @@ plugins=(git) # rvm rails ruby gem bundler)
 source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:
+PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # [[ $- != *i* ]] && return
@@ -44,9 +44,8 @@ PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:
 
 # Customize to your needs...
 alias tmux="tmux -u"
-alias vim="/usr/local/bin/vim"
-alias emacs="/usr/local/bin/emacs"
 alias emacsnw="emacs -nw"
+alias readlink="greadlink"
 export TERM=screen-256color
 
 export LC_ALL=en_US.UTF-8
@@ -58,18 +57,8 @@ export EDITOR="$VISUAL"
 
 export NODE_PATH='/usr/local/lib/node_modules'
 
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Projects
-#export GOPATH=$HOME/Projects/Go
-#source /usr/local/bin/virtualenvwrapper.sh
-
 export PATH=/Users/andreyshuster/small-tools:/usr/local/bin:$PATH
 
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
- #The next line updates PATH for the Google Cloud SDK.
-#source '/Users/novus42/google-cloud-sdk/path.zsh.inc'
-#source '/Users/novus42/google-cloud-sdk/completion.zsh.inc'
-#eval "$(rbenv init -)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$PATH"

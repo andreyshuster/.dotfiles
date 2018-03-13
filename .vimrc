@@ -46,8 +46,8 @@ source ~/.vim/vimrc
 colorscheme molokai
 let g:molokai_original=1
 syntax enable
-" Color scheme solarized
-" set t_Co=256
-" let g:solarized_termcolors=256
-" set background=dark
-" colorscheme solarized"
+"Color scheme solarized
+"set t_Co=256
+"l"et g:solarized_termcolors=256
+"s"et background=light
+"c"olorscheme solarized

@@ -28,6 +28,7 @@
     js3-mode
     js2-mode
     jsx-mode
+    rjsx-mode
     json-mode
     web-mode
     emmet-mode
@@ -47,6 +48,7 @@
     rainbow-mode
     tide
     company
+    xah-find
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -72,6 +74,7 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 
 ;; org mode
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
@@ -120,7 +123,7 @@
  '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
-    (picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 
 ;; Vue.js
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
@@ -152,7 +155,8 @@
 
 (powerline-default-theme)
 (fset 'yes-or-no-p 'y-or-n-p)
-(normal-erase-is-backspace-mode 1)
+(if (display-graphic-p)
+    (normal-erase-is-backspace-mode 1))
 (setq ns-right-alternate-modifier nil)
 ;(mouse-wheel-mode t)
 ;(scroll-bar-mode -1)
@@ -194,13 +198,9 @@
 ;; load individual modules
 (load-user-file "keys.el")
 ;; sbcl
-(load-user-file "clisp.el")
+;;(load-user-file "clisp.el")
 ;; typescript
 (load-user-file "typescript.el")
-
-;; custom fb2-mode
-(add-to-list 'load-path "~/.dotfiles/.emacs.d/custom/fb2-mode")
-(require 'fb2-mode)
 
 ;; flycheck
 ;; http://www.flycheck.org/manual/latest/index.html
