@@ -123,7 +123,7 @@
  '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
-    (eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (2048-game angular-mode smooth-scroll eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
 
 ;; Vue.js
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
@@ -134,10 +134,10 @@
 (add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
 
 ;; python-mode
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-(setq-default py-shell-name "ipython")
-(setq-default py-which-bufname "IPython")
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t)
+;; (setq-default py-shell-name "ipython")
+;; (setq-default py-which-bufname "IPython")
 
 ;; font settings
 (set-default-font "Monaco")
