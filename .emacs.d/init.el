@@ -33,7 +33,6 @@
     web-mode
     emmet-mode
 	jedi
-    ido-ubiquitous
     ido-vertical-mode
     helm
     projectile
@@ -45,7 +44,6 @@
     powerline
     neotree
     nyan-mode
-    rainbow-mode
     tide
     company
     xah-find
@@ -87,9 +85,6 @@
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
-;; rainbow
-(add-hook 'css-mode-hook 'rainbow-mode)
-
 ;;web mode
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
@@ -123,7 +118,7 @@
  '(neo-theme (quote nerd))
  '(package-selected-packages
    (quote
-    (2048-game angular-mode smooth-scroll eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode ido-ubiquitous jedi emmet-mode web-mode js3-mode auto-complete))))
+    (helm-ag iedit markdown-preview-eww 2048-game angular-mode smooth-scroll eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode jedi emmet-mode web-mode js3-mode auto-complete))))
 
 ;; Vue.js
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
@@ -228,3 +223,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(defun remove-newlines-in-region ()
+  "Removes all newlines in the region."
+  (interactive)
+  (save-restriction
+    (narrow-to-region (point) (mark))
+    (goto-char (point-min))
+    (while (search-forward "\n" nil t) (replace-match "" nil t))))
+
+(global-set-key [f9] 'remove-newlines-in-region)

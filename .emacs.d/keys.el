@@ -10,8 +10,7 @@
 (global-set-key [f4] 'slime)
 (global-set-key [f5] 'rjsx-mode)
 (global-set-key [f6] 'whitespace-mode)
-(global-set-key [f7] 'xah-find-text)
-(global-set-key [C-f7] 'xah-find-text-regex)
+(global-set-key [f7] 'ag)
 (global-set-key [f8] 'remove-dos-eol)
 
 (global-set-key [f12] 'tomatinho)
