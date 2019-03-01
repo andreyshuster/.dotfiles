@@ -26,6 +26,8 @@
   '(
     paredit
     magit
+    projectile
+    helm-projectile
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -58,12 +60,20 @@
 ;        (load-theme 'tangotango t))
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+
 ;; globals
 ;(load-user-file "globals.el")
 ;; different functions helpers
 ;(load-user-file "helpers.el")
 ;; load individual modules
-;(load-user-file "keys.el")
+(load-user-file "keys.el")
+
+;; projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(global-set-key (kbd "C-x C-f") 'projectile-find-file)
+(global-set-key (kbd "C-x p") 'projectile-switch-project)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -73,7 +83,7 @@
  '(custom-safe-themes
    (quote
     ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
- '(package-selected-packages (quote (magit paredit))))
+ '(package-selected-packages (quote (helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
