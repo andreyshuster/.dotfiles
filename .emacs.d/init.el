@@ -28,6 +28,7 @@
     magit
     projectile
     helm-projectile
+    nyan-mode
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -83,7 +84,9 @@
  '(custom-safe-themes
    (quote
     ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
- '(package-selected-packages (quote (helm-projectile projectile magit paredit))))
+ '(package-selected-packages
+   (quote
+    (nyan-mode helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
