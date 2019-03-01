@@ -17,10 +17,10 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-"""
 Bundle 'kien/ctrlp.vim'
 Bundle 'klen/python-mode'
 Bundle 'tomasr/molokai'
+Bundle 'morhetz/gruvbox'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
@@ -28,16 +28,17 @@ Bundle 'jszakmeister/vim-togglecursor'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'altercation/vim-colors-solarized'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Bundle 'mhinz/vim-startify'
+Plugin 'mileszs/ack.vim'
+
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-"Bundle 'fatih/vim-go'
 "Bundle 'Valloric/YouCompleteMe'
+
 silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install -g jshint; cd -; }
 
 filetype plugin indent on
@@ -46,8 +47,3 @@ source ~/.vim/vimrc
 colorscheme molokai
 let g:molokai_original=1
 syntax enable
-"Color scheme solarized
-"set t_Co=256
-"l"et g:solarized_termcolors=256
-"s"et background=light
-"c"olorscheme solarized

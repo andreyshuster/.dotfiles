@@ -327,3 +327,5 @@ autocmd BufReadPost fugitive://*
 
 au BufRead,BufNewFile *.md set filetype=markdown
 
+let g:syntastic_javascript_checkers = ['eslint']
+

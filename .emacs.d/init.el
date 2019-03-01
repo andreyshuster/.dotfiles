@@ -31,7 +31,6 @@
     rjsx-mode
     json-mode
     web-mode
-    emmet-mode
 	jedi
     ido-vertical-mode
     helm
@@ -46,7 +45,9 @@
     nyan-mode
     tide
     company
-    xah-find
+    flycheck
+    exec-path-from-shell
+    ag
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -86,10 +87,10 @@
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 ;;web mode
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-enable-auto-pairing t)
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
+(setq web-mode-enable-auto-pairing 4)
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -107,18 +108,20 @@
    (quote
     ("5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" "2b5aa66b7d5be41b18cc67f3286ae664134b95ccc4a86c9339c886dfd736132d" default)))
  '(default-input-method "russian-computer")
- '(js-indent-level 2)
+ '(js-indent-level 4)
  '(js-switch-indent-offset 2)
- '(js2-basic-offset 2)
+ '(js2-basic-offset 4)
  '(js2-bounce-indent-p nil)
  '(js2-strict-missing-semi-warning nil)
  '(neo-click-changes-root t)
  '(neo-create-file-auto-open nil)
  '(neo-mode-line-type (quote neotree))
  '(neo-theme (quote nerd))
+ '(org-babel-load-languages (quote ((python . t) (js . t) (sh . t) (emacs-lisp . t))))
  '(package-selected-packages
    (quote
-    (helm-ag iedit markdown-preview-eww 2048-game angular-mode smooth-scroll eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company typescript-mode tide markdown-mode tomatinho ac-js2 ng2-mode magit rjsx-mode kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode jedi emmet-mode web-mode js3-mode auto-complete))))
+    (rjsx-mode graphql-mode yaml-mode typing typit org nov exec-path-from-shell helm-ag iedit markdown-preview-eww 2048-game angular-mode smooth-scroll eslint-fix wgrep-ag writeroom-mode olivetti org-bullets autobookmarks smart-tab xah-find find-file-in-project fiplr ag package ob-translate picpocket js-auto-beautify color-theme-sanityinc-solarized solarized-theme html5-schema sass-mode company tide markdown-mode tomatinho ac-js2 ng2-mode magit kaomoji vue-mode helm-unicode dirtree neotree hackernews w3m powerline jsx-mode nodejs-repl flx-ido json-reformat json-mode js2-mode color-theme-solarized rubocop flymake-jshint flycheck ample-zen-theme color-theme-molokai color-theme ido-vertical-mode jedi emmet-mode js3-mode auto-complete)))
+ '(yaml-indent-offset 4))
 
 ;; Vue.js
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
@@ -136,7 +139,7 @@
 
 ;; font settings
 (set-default-font "Monaco")
-(set-face-attribute 'default nil :height 150) 
+(set-face-attribute 'default nil :height 140) 
 (setq-default line-spacing 1)
 ;; linum
 (linum-mode t)
@@ -172,6 +175,10 @@
 ;; autocomplete
 (ac-config-default)
 
+;; stop creating backup and temp
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
+(setq create-lockfiles nil)
 
 ;; different themes if started in terminal or gui
 (if (display-graphic-p) 
@@ -217,14 +224,6 @@
     '(json-jsonlist)))
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
 (defun remove-newlines-in-region ()
   "Removes all newlines in the region."
   (interactive)
@@ -234,3 +233,17 @@
     (while (search-forward "\n" nil t) (replace-match "" nil t))))
 
 (global-set-key [f9] 'remove-newlines-in-region)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+(defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
+  "Workaround sgml-mode and follow airbnb component style."
+  (save-excursion
+    (beginning-of-line)
+    (if (looking-at-p "^ +\/?> *$")
+        (delete-char sgml-basic-offset))))
