@@ -29,6 +29,8 @@
     projectile
     helm-projectile
     nyan-mode
+    web-mode
+    flycheck
     ) "a list of packages to install")
 
 ;; method to check if all packages are installed
@@ -76,6 +78,24 @@
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)) ;; auto-enable for .js/.jsx files
+(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+(defun web-mode-init-hook ()
+  "Hooks for Web mode.  Adjust indent."
+  (setq web-mode-markup-indent-offset 4))
+  
+(add-hook 'web-mode-hook  'web-mode-init-hook)
+;;;; flycheck
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint json-jsonlist)))
+;;;; Enable eslint checker for web-mode
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+;;;; Enable flycheck globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'flycheck-mode-hook 'add-node-modules-path)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -86,7 +106,7 @@
     ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(package-selected-packages
    (quote
-    (nyan-mode helm-projectile projectile magit paredit))))
+    (add-node-modules-path flycheck web-mode nyan-mode helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
