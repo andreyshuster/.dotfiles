@@ -33,6 +33,7 @@
     flycheck
     json-mode
     sass-mode
+    yaml-mode
     company
     company-tern
     color-theme-sanityinc-tomorrow
@@ -88,6 +89,7 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
@@ -112,7 +114,7 @@
 (require 'company-tern)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-to-list 'company-backends 'company-tern)
-(add-hook 'js2-mode-hook (lambda ()
+(add-hook 'web-mode-hook (lambda ()
                            (tern-mode)
                            (company-mode)))
 
@@ -129,7 +131,7 @@
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(sass-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
