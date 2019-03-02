@@ -6,6 +6,7 @@
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)

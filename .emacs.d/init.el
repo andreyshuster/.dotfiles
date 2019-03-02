@@ -34,6 +34,7 @@
     json-mode
     sass-mode
     yaml-mode
+    graphql-mode
     company
     company-tern
     color-theme-sanityinc-tomorrow
@@ -61,11 +62,6 @@
 (set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 1)
 
-;; different themes if started in terminal or gui
-;(if (display-graphic-p)
-;    (load-theme 'sanityinc-solarized-light)
-;        (load-theme 'tangotango t))
-
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 
 ;; globals
@@ -82,7 +78,7 @@
 (helm-projectile-on)
 (global-set-key (kbd "C-x C-f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
-(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-s") 'swiper)
 
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
@@ -90,6 +86,7 @@
 (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.graphql\\'" . graphql-mode))
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
@@ -131,7 +128,7 @@
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(sass-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
