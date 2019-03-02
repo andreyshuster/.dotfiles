@@ -34,6 +34,7 @@
     json-mode
     company
     company-tern
+    color-theme-sanityinc-tomorrow
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
@@ -90,6 +91,7 @@
   "Hooks for Web mode.  Adjust indent."
   (setq web-mode-markup-indent-offset 4))
 (add-hook 'web-mode-hook  'web-mode-init-hook)
+(add-hook 'web-mode-hook 'paredit-mode)
 
 ;;;; flycheck
 (require 'flycheck)
@@ -110,20 +112,20 @@
                            (tern-mode)
                            (company-mode)))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-minimum-prefix-length 2)
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
  '(custom-safe-themes
    (quote
-    ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
+    (color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
