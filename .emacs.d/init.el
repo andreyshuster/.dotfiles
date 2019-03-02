@@ -31,7 +31,8 @@
     nyan-mode
     web-mode
     flycheck
-    ) "a list of packages to install")
+    json-mode
+    ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
 (defun packages-installed-p ()
@@ -51,13 +52,13 @@
       (package-install p))))
 
 ;; font settings
-(set-default-font "Monaco")
-(set-face-attribute 'default nil :height 140) 
+(set-frame-font "Monaco")
+(set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 1)
 
 ;; different themes if started in terminal or gui
-;(if (display-graphic-p) 
-;    (load-theme 'sanityinc-solarized-light) 
+;(if (display-graphic-p)
+;    (load-theme 'sanityinc-solarized-light)
 ;        (load-theme 'tangotango t))
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
@@ -71,7 +72,7 @@
 (load-user-file "helm.el")
 
 ;; projectile
-(projectile-global-mode)
+(projectile-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 (global-set-key (kbd "C-x C-f") 'projectile-find-file)
@@ -79,17 +80,20 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; web-mode
-(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)) ;; auto-enable for .js/.jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
   "Hooks for Web mode.  Adjust indent."
   (setq web-mode-markup-indent-offset 4))
-  
 (add-hook 'web-mode-hook  'web-mode-init-hook)
+
 ;;;; flycheck
+(require 'flycheck)
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
-                      '(javascript-jshint json-jsonlist)))
+                      '(json-jsonlist)))
 ;;;; Enable eslint checker for web-mode
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 ;;;; Enable flycheck globally
@@ -106,7 +110,7 @@
     ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(package-selected-packages
    (quote
-    (add-node-modules-path flycheck web-mode nyan-mode helm-projectile projectile magit paredit))))
+    (flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

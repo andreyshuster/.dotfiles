@@ -1,4 +1,7 @@
+;;;; package --- Summary
+;;;; Commentary:
 ;; globals
+;;; Code:
 ;(global-auto-complete-mode t)
 (global-linum-mode)
 (menu-bar-mode -1)
@@ -11,8 +14,6 @@
 
 ;; linum
 (linum-mode t)
-(setq linum-format "%4d ")
-(set-face-attribute 'linum nil :background "#000")
 
 ;; misc settings
 (setq visible-bell 1)
@@ -23,10 +24,14 @@
 (setq ns-right-alternate-modifier nil)
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
-(setq scroll-step 1) 
+(setq scroll-step 1)
 
 ;; stop creating backup and temp
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq create-lockfiles nil)
+
+(provide 'globals)
+;;; globals.el ends here
+
 
