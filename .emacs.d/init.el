@@ -32,6 +32,7 @@
     web-mode
     flycheck
     json-mode
+    sass-mode
     company
     company-tern
     color-theme-sanityinc-tomorrow
@@ -85,11 +86,14 @@
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
   "Hooks for Web mode.  Adjust indent."
   (setq web-mode-markup-indent-offset 4))
+
 (add-hook 'web-mode-hook  'web-mode-init-hook)
 (add-hook 'web-mode-hook 'paredit-mode)
 
@@ -125,7 +129,8 @@
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
+    (sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+ '(sass-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
