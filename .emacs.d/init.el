@@ -32,6 +32,8 @@
     web-mode
     flycheck
     json-mode
+    company
+    company-tern
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
@@ -100,17 +102,28 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'flycheck-mode-hook 'add-node-modules-path)
 
+(require 'company)
+(require 'company-tern)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'company-backends 'company-tern)
+(add-hook 'js2-mode-hook (lambda ()
+                           (tern-mode)
+                           (company-mode)))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-minimum-prefix-length 2)
  '(custom-safe-themes
    (quote
     ("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+ '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
+    (company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

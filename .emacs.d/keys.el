@@ -9,6 +9,7 @@
 
 (global-set-key [f5] 'rjsx-mode)
 (global-set-key [f6] 'whitespace-mode)
+(global-set-key [f7] 'ag)
 (global-set-key [f8] 'remove-dos-eol)
 (global-set-key [f9] 'remove-newlines-in-region)
 
