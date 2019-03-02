@@ -48,8 +48,6 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;(load-user-file "helm.el")
-;(load-user-file "ido.el")
 ;; font settings
 (set-default-font "Monaco")
 (set-face-attribute 'default nil :height 140) 
@@ -63,11 +61,12 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 
 ;; globals
-;(load-user-file "globals.el")
+(load-user-file "globals.el")
 ;; different functions helpers
-;(load-user-file "helpers.el")
+(load-user-file "helpers.el")
 ;; load individual modules
 (load-user-file "keys.el")
+(load-user-file "helm.el")
 
 ;; projectile
 (projectile-global-mode)
@@ -75,6 +74,7 @@
 (helm-projectile-on)
 (global-set-key (kbd "C-x C-f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
