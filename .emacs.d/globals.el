@@ -26,6 +26,13 @@
 
 (setq scroll-step 1)
 
+(show-paren-mode t) 
+(setq show-paren-style 'expression)
+(delete-selection-mode t)
+;; End of file newlines
+(setq require-final-newline    t)
+(setq next-line-add-newlines nil)
+				
 ;; stop creating backup and temp
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
