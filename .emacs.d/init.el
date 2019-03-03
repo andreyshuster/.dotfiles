@@ -38,6 +38,9 @@
     company
     company-tern
     color-theme-sanityinc-tomorrow
+    add-node-modules-path
+    swiper
+    ag
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
