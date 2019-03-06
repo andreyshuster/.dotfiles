@@ -37,7 +37,7 @@
     graphql-mode
     company
     color-theme-sanityinc-tomorrow
-    ivy-mode
+    ivy
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
