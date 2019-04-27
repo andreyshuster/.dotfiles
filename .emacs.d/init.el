@@ -10,8 +10,8 @@
         (t "~/.emacs.d/")))
 
 (defun load-user-file (file)
+  "Load a FILE in current user's configuration directory."
   (interactive "f")
-  "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-init-dir)))
 
 (require 'cl)
@@ -36,11 +36,13 @@
     yaml-mode
     graphql-mode
     company
-    company-tern
     color-theme-sanityinc-tomorrow
+    zenburn-theme
     add-node-modules-path
+    counsel
     swiper
     ag
+    ivy
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
@@ -73,15 +75,23 @@
 (load-user-file "helpers.el")
 ;; load individual modules
 (load-user-file "keys.el")
-(load-user-file "helm.el")
+;;(load-user-file "helm.el")
+
+;;ivy
+(ivy-mode 1)
+(setq ivy-wrap t)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 ;; projectile
 (projectile-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(global-set-key (kbd "C-x C-f") 'projectile-find-file)
+(setq projectile-completion-system 'ivy)
+;;(helm-projectile-on)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
-(global-set-key (kbd "C-s") 'swiper)
 
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
@@ -110,12 +120,20 @@
 (add-hook 'flycheck-mode-hook 'add-node-modules-path)
 
 (require 'company)
-(require 'company-tern)
 (add-hook 'after-init-hook 'global-company-mode)
-(add-to-list 'company-backends 'company-tern)
-(add-hook 'web-mode-hook (lambda ()
-                           (tern-mode)
-                           (company-mode)))
+(add-hook 'web-mode-hook (lambda () (company-mode)))
+
+;; ido
+;; (setq ido-enable-flex-matching t)
+;; (ido-mode 1)
+;; (ido-vertical-mode 1)
+
+;; tabs
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+
+;;autofill disable
+(auto-fill-mode -1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -129,17 +147,20 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+    ("d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+ '(default-input-method "russian-computer")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(frame-background-mode (quote dark))
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
- '(sass-indent-offset 4))
+    (twilight-theme markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+ '(sass-indent-offset 4)
+ '(yaml-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'dired-find-alternate-file 'disabled nil)
