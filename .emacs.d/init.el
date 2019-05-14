@@ -35,12 +35,10 @@
     sass-mode
     yaml-mode
     graphql-mode
-    counsel
-    swiper
     company
     color-theme-sanityinc-tomorrow
-    ivy
     elpy
+    dashboard
     neotree
     ) "A list of packages to install.")
 
@@ -90,7 +88,27 @@
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
 
-;; web-mode
+;; dashboard
+(dashboard-setup-startup-hook)
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        ; (agenda . 5)
+                        (registers . 5)))
+
+;; org-mode
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
+;; lisp-mode
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+ ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
@@ -145,7 +163,7 @@
  '(ido-vertical-mode t)
  '(package-selected-packages
    (quote
-    (neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(sass-indent-offset 4)
  '(sgml-basic-offset 4)
  '(yaml-indent-offset 4))
