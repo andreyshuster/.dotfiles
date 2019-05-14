@@ -14,6 +14,7 @@
 
 ;; linum
 (linum-mode t)
+(setq linum-format "%4d ")
 
 ;; misc settings
 (setq visible-bell 1)

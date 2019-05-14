@@ -35,6 +35,8 @@
     sass-mode
     yaml-mode
     graphql-mode
+    counsel
+    swiper
     company
     color-theme-sanityinc-tomorrow
     zenburn-theme
@@ -69,27 +71,25 @@
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 
+;; ido
+;; (require 'ido)
+;; (ido-mode t)
+;; (ido-vertical-mode 1)
+;; (setq ido-enable-flex-matching t)
+
 ;; globals
 (load-user-file "globals.el")
 ;; different functions helpers
 (load-user-file "helpers.el")
 ;; load individual modules
 (load-user-file "keys.el")
-;;(load-user-file "helm.el")
-
-;;ivy
-(ivy-mode 1)
-(setq ivy-wrap t)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(load-user-file "helm.el")
 
 ;; projectile
 (projectile-mode)
-(setq projectile-completion-system 'ivy)
-;;(helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
 
@@ -100,6 +100,8 @@
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.graphql\\'" . graphql-mode))
+
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
@@ -123,17 +125,9 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'web-mode-hook (lambda () (company-mode)))
 
-;; ido
-;; (setq ido-enable-flex-matching t)
-;; (ido-mode 1)
-;; (ido-vertical-mode 1)
-
 ;; tabs
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
-
-;;autofill disable
-(auto-fill-mode -1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -144,18 +138,27 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(beacon-color "#f2777a")
  '(company-minimum-prefix-length 2)
- '(custom-enabled-themes (quote (zenburn)))
+ '(company-quickhelp-color-background "#4F4F4F")
+ '(company-quickhelp-color-foreground "#DCDCCC")
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
  '(custom-safe-themes
    (quote
-    ("d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+    ("04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(default-input-method "russian-computer")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(frame-background-mode (quote dark))
  '(global-company-mode t)
+ '(graphql-indent-level 4)
+ '(ido-vertical-mode t)
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (twilight-theme markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(sass-indent-offset 4)
+ '(sgml-basic-offset 4)
  '(yaml-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
