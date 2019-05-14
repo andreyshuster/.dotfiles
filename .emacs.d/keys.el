@@ -5,7 +5,8 @@
 (windmove-default-keybindings 'meta)
 
 (global-set-key [f1] 'ibuffer)
-(global-set-key [f2] 'ansi-term)
+(global-set-key [f2] 'neotree-projectile-action)
+(global-set-key [f3] 'ansi-term)
 
 (global-set-key [f4] 'paredit-mode)
 (global-set-key [f6] 'whitespace-mode)
