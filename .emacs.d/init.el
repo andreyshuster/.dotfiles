@@ -24,26 +24,29 @@
 
 (defvar required-packages
   '(
-    paredit
-    magit
-    projectile
-    helm-projectile
-    nyan-mode
-    web-mode
-    flycheck
-    json-mode
-    sass-mode
-    yaml-mode
-    graphql-mode
-    company
     color-theme-sanityinc-tomorrow
-    elpy
+    company
     dashboard
+    elpy
+    flycheck
+    graphql-mode
+    helm-projectile
+    json-mode
+    magit
     neotree
+    nyan-mode
+    paredit
+    peep-dired
+    projectile
+    sass-mode
+    use-package
+    web-mode
+    yaml-mode
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
 (defun packages-installed-p ()
+  ;; get list of installed packages
   (loop for p in required-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
@@ -65,12 +68,6 @@
 (setq-default line-spacing 1)
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-
-;; ido
-;; (require 'ido)
-;; (ido-mode t)
-;; (ido-vertical-mode 1)
-;; (setq ido-enable-flex-matching t)
 
 ;; globals
 (load-user-file "globals.el")
@@ -156,6 +153,9 @@
    (quote
     ("54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(default-input-method "russian-computer")
+ '(elfeed-feeds
+   (quote
+    ("https://mmozg.net/rss/index/" "http://www.mirf.ru/feed")))
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(frame-background-mode (quote dark))
  '(global-company-mode t)
@@ -163,7 +163,8 @@
  '(ido-vertical-mode t)
  '(package-selected-packages
    (quote
-    (dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (use-package ereader peep-dired elfeed dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+ '(peep-dired-cleanup-eagerly t)
  '(sass-indent-offset 4)
  '(sgml-basic-offset 4)
  '(yaml-indent-offset 4))
@@ -174,3 +175,6 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
+
+(provide 'init)
+;;; init.el ends here
