@@ -34,16 +34,18 @@
     helm-projectile
     json-mode
     magit
-    neotree
-    nord-theme
     nyan-mode
     paredit
     peep-dired
     projectile
     sass-mode
+    terraform-mode
     use-package
     web-mode
     yaml-mode
+    ivy
+    swiper
+    counsel
     ) "A list of packages to install.")
 
 ;; method to check if all packages are installed
@@ -77,27 +79,48 @@
 (load-user-file "helpers.el")
 ;; load individual modules
 (load-user-file "keys.el")
-(load-user-file "helm.el")
+;; (load-user-file "helm.el")
+
+
+;; ivy
+(ivy-mode 1)
+(setq ivy-wrap t)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
 
 ;; projectile
 (projectile-mode)
-(setq projectile-completion-system 'helm)
+(setq projectile-completion-system 'ivy)
 (helm-projectile-on)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x p") 'projectile-switch-project)
-(global-set-key (kbd "C-s") 'helm-occur)
+;; (global-set-key (kbd "C-s") 'helm-occur)
+
 
 ;; dashboard
 (dashboard-setup-startup-hook)
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 5)
                         (projects . 5)
-                        ; (agenda . 5)
                         (registers . 5)))
 
+
 ;; org-mode
+(require 'org-tempo)
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+    )
+)
+
 
 ;; lisp-mode
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -115,6 +138,7 @@
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.graphql\\'" . graphql-mode))
+(add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
 
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
@@ -155,10 +179,10 @@
  '(company-minimum-prefix-length 2)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
- '(custom-enabled-themes (quote (nord)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+    ("c82d24bfba431e8104219bfd8e90d47f1ad6b80a504a7900cbee002a8f04392f" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(default-input-method "russian-computer")
  '(elfeed-feeds
    (quote
@@ -174,7 +198,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(peep-dired-cleanup-eagerly t)
  '(sass-indent-offset 4)
@@ -201,7 +225,8 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(yaml-indent-offset 4))
+ '(window-divider-mode nil)
+ '(yaml-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
