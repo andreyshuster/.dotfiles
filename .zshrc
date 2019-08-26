@@ -40,7 +40,7 @@ PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
 
 # Customize to your needs...
 alias tmux="tmux -u"
-alias emacsnw="emacs -nw"
+alias e="emacs -nw"
 alias readlink="greadlink"
 export TERM=screen-256color
 
