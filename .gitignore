@@ -6,3 +6,8 @@
 *.last
 .emacs.d/.python-environments
 .emacs.d/projectile-bookmarks.eld
+.emacs.d/eshell/history
+.emacs.d/feeds.el
+.emacs.d/network-security.data
+.emacs.d/nov-places
+.emacs.d/transient/history.el
