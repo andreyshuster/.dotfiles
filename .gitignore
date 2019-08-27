@@ -11,3 +11,4 @@
 .emacs.d/network-security.data
 .emacs.d/nov-places
 .emacs.d/transient/history.el
+.emacs.d/.cache/treemacs-persist
