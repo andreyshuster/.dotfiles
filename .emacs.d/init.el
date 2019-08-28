@@ -70,9 +70,9 @@
       (package-install p))))
 
 ;; font settings
-(set-frame-font "Monaco")
+(set-frame-font "SF Mono")
 (set-face-attribute 'default nil :height 140)
-(setq-default line-spacing 1)
+(setq-default line-spacing 2)
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 
