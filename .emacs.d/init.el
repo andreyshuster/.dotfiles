@@ -103,6 +103,11 @@
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
 
+(xterm-mouse-mode 1)
+(define-key key-translation-map (kbd "<s-mouse-1>") (kbd "<mouse-2>"))
+(global-set-key [mouse-4] 'scroll-down-line)
+(global-set-key [mouse-5] 'scroll-up-line)
+
 ;; ivy
 (ivy-mode 1)
 (setq ivy-wrap t)
