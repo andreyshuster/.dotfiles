@@ -16,10 +16,8 @@
 
 (require 'cl)
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (defvar required-packages
@@ -169,7 +167,8 @@
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
   "Hooks for Web mode.  Adjust indent."
-  (setq web-mode-markup-indent-offset 4))
+  (setq web-mode-markup-indent-offset 4)
+  (setq-local comment-start "//"))
 
 (add-hook 'web-mode-hook  'web-mode-init-hook)
 
