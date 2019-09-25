@@ -1,17 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="bira"
 ZSH_THEME="robbyrussell"
-#ZSH_THEME='mrtazz'
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -33,15 +23,18 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git zsh-autosuggestions) # rvm rails ruby gem bundler)
 
-source $ZSH/oh-my-zsh.sh
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
+
+source $ZSH/oh-my-zsh.sh
+source /usr/local/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
 alias tmux="tmux -u"
 alias e="emacs -nw"
+alias ec="emacsclient -nw"
 alias readlink="greadlink"
+
 export TERM=screen-256color
 
 export LC_ALL=en_US.UTF-8
@@ -57,3 +50,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 export NODE_PATH='/usr/local/lib/node_modules'
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# settings that not supposed to be on every machine e
+LOCAL_ZSHRC="$HOME/.zshrc-local"
+[ -f $LOCAL_ZSHRC ] && source $LOCAL_ZSHRC
