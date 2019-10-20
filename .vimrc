@@ -44,6 +44,5 @@ silent !type jshint &>/dev/null || { cd ~; echo 'Installing jshint'; npm install
 filetype plugin indent on
 
 source ~/.vim/vimrc
-colorscheme molokai
-let g:molokai_original=1
+colors zenburn
 syntax enable

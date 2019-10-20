@@ -166,6 +166,11 @@
 (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
 (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
 
+;; python mode
+  (require 'flymake-python-pyflakes)
+  (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+  (setq flymake-python-pyflakes-executable "flake8")
+
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (defun web-mode-init-hook ()
   "Hooks for Web mode.  Adjust indent."
@@ -210,7 +215,7 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("450f3382907de50be905ae8a242ecede05ea9b858a8ed3cc8d1fbdf2d57090af" "a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" "c82d24bfba431e8104219bfd8e90d47f1ad6b80a504a7900cbee002a8f04392f" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+    ("cdb4ffdecc682978da78700a461cdc77456c3a6df1c1803ae2dd55c59fa703e3" "450f3382907de50be905ae8a242ecede05ea9b858a8ed3cc8d1fbdf2d57090af" "a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" "c82d24bfba431e8104219bfd8e90d47f1ad6b80a504a7900cbee002a8f04392f" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "d057f0430ba54f813a5d60c1d18f28cf97d271fd35a36be478e20924ea9451bd" "dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
  '(default-input-method "russian-computer")
  '(elfeed-feeds (quote ("https://changelog.com/master/feed")))
  '(fci-rule-color "#383838")
@@ -224,7 +229,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed dashboard neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(peep-dired-cleanup-eagerly t)
  '(sass-indent-offset 4)
@@ -258,7 +263,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(hl-line ((t (:background "brightblack")))))
 (put 'dired-find-alternate-file 'disabled nil)
 
 (provide 'init)
