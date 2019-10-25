@@ -34,7 +34,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Bundle 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
-
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 "Bundle 'Valloric/YouCompleteMe'

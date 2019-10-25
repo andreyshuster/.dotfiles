@@ -27,7 +27,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/bin/aws_zsh_completer.sh
+#source /usr/local/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
 alias tmux="tmux -u"
@@ -35,17 +35,15 @@ alias e="emacs -nw"
 alias ec="emacsclient -nw"
 alias readlink="greadlink"
 
-export TERM=screen-256color
-
-export LC_ALL=en_US.UTF-8
+export TERM="xterm-256color"
 
 export VISUAL='emacs -nw'
 export EDITOR="$VISUAL"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
 
 export NODE_PATH='/usr/local/lib/node_modules'
 
@@ -54,3 +52,7 @@ export PATH="$HOME/.yarn/bin:$PATH"
 # settings that not supposed to be on every machine e
 LOCAL_ZSHRC="$HOME/.zshrc-local"
 [ -f $LOCAL_ZSHRC ] && source $LOCAL_ZSHRC
+
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
