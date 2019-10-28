@@ -42,8 +42,10 @@ export EDITOR="$VISUAL"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source ~/.local/bin/virtualenvwrapper.sh
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# source ~/.local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
 
 export NODE_PATH='/usr/local/lib/node_modules'
 
