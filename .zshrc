@@ -21,18 +21,19 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-autosuggestions) # rvm rails ruby gem bundler)
+plugins=(git) # rvm rails ruby gem bundler)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
 
 source $ZSH/oh-my-zsh.sh
-#source /usr/local/bin/aws_zsh_completer.sh
+source /usr/local/bin/aws_zsh_completer.sh
 
 # Customize to your needs...
 alias tmux="tmux -u"
 alias e="emacs -nw"
 alias ec="emacsclient -nw"
+alias ecw='emacsclient -cn'
 alias readlink="greadlink"
 
 export TERM="xterm-256color"
@@ -57,4 +58,4 @@ LOCAL_ZSHRC="$HOME/.zshrc-local"
 
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
-
+export GOPATH=$HOME/go
