@@ -21,7 +21,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git) # rvm rails ruby gem bundler)
+plugins=(git zsh-autosuggestions) # rvm rails ruby gem bundler)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
@@ -59,3 +59,9 @@ LOCAL_ZSHRC="$HOME/.zshrc-local"
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 export GOPATH=$HOME/go
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/andreys/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andreys/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/andreys/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andreys/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
