@@ -18,6 +18,10 @@
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 (package-initialize)
 
 (defvar required-packages
@@ -48,6 +52,9 @@
     yaml-mode
     ) "A list of packages to install.")
 
+(if (eq system-type 'darwin)
+    (add-to-list 'required-packages 'exec-path-from-shell))
+
 ;; method to check if all packages are installed
 (defun packages-installed-p ()
   ;; get list of installed packages
@@ -66,6 +73,13 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(load "globals.el")
+(load "helpers.el")
+(load "keys.el")
+(load "setup-clojure.el")
+(load "setup-js.el")
+
 ;; font settings
 (set-frame-font "SF Mono")
 (set-face-attribute 'default nil :height 140)
@@ -75,14 +89,6 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 
 (add-to-list 'exec-path "/usr/local/Cellar/imagemagick")
-
-;; globals
-(load-user-file "globals.el")
-;; different functions helpers
-(load-user-file "helpers.el")
-;; load individual modules
-(load-user-file "keys.el")
-(load-user-file "helm.el")
 
 ;; dired-sidebar
 (use-package dired-sidebar
@@ -103,12 +109,39 @@
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
 
+;; helm
+(require 'helm)
+(require 'helm-config)
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
 ;; projectile
 (projectile-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 ;; shortcuts for helm in keys.el
+
+(when (executable-find "curl")
+  (setq helm-google-suggest-use-curl-p t))
+
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t)
+
+(helm-mode 1)
+
 
 ;; dashboard
 (dashboard-setup-startup-hook)
@@ -246,7 +279,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (cider clojure-mode-extra-font-locking clojure-mode rainbow-delimiters yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(peep-dired-cleanup-eagerly t)
  '(pos-tip-background-color "#073642")

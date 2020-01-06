@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -28,6 +28,9 @@ PATH=$PATH:/usr/local/share/npm/bin:$HOME/utils:$HOME/small-tools:
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
+
+autoload -U promptinit; promptinit
+prompt pure
 
 # Customize to your needs...
 alias tmux="tmux -u"
