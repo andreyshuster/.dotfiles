@@ -109,6 +109,12 @@
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
 
+;; elpy
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
 ;; helm
 (require 'helm)
 (require 'helm-config)
@@ -158,7 +164,11 @@
  'org-babel-load-languages '(
                              (shell . t)
                              (python . t)
+                             (clojure . t)
                              ))
+
+;; rainbow delimiters in prog modes
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; golang mode
 (add-hook 'go-mode-hook 'go-mode-setup)
@@ -230,6 +240,7 @@
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(beacon-color "#f2777a")
+ '(coffee-tab-width 2)
  '(company-minimum-prefix-length 2)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
@@ -279,7 +290,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (cider clojure-mode-extra-font-locking clojure-mode rainbow-delimiters yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (py-isort cider clojure-mode-extra-font-locking clojure-mode rainbow-delimiters yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(peep-dired-cleanup-eagerly t)
  '(pos-tip-background-color "#073642")
