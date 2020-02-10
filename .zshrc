@@ -38,11 +38,18 @@ alias e="emacs -nw"
 alias ec="emacsclient -nw"
 alias ecw='emacsclient -cn'
 alias readlink="greadlink"
-
+alias sed="gsed"
+alias note="ecw $HOME/OneDrive/ORG/$(date +%F).org"
+alias cat="bat"
 export TERM="xterm-256color"
 
 export VISUAL='emacs -nw'
 export EDITOR="$VISUAL"
+
+# fzf
+alias fzf="fzf --preview 'bat --color \"always\" {}'"
+alias vimz='nvim $(fzf)'
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(emacsclient -nw {})+abort'"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs

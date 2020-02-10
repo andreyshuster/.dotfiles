@@ -29,9 +29,7 @@
     color-theme-sanityinc-tomorrow
     company
     company-restclient
-    dashboard
     dumb-jump
-    elpy
     flycheck
     graphql-mode
     helm-projectile
@@ -47,7 +45,7 @@
     terraform-mode
     use-package
     web-mode
-    dired-sidebar
+    dockerfile-mode
     powerline
     yaml-mode
     ) "A list of packages to install.")
@@ -90,30 +88,14 @@
 
 (add-to-list 'exec-path "/usr/local/Cellar/imagemagick")
 
-;; dired-sidebar
-(use-package dired-sidebar
-  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+;; markdown-mode
+(use-package markdown-mode
   :ensure t
-  :commands (dired-sidebar-toggle-sidebar)
-  :init
-  (add-hook 'dired-sidebar-mode-hook
-            (lambda ()
-              (unless (file-remote-p default-directory)
-                (auto-revert-mode))))
-  :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
-
-  (setq dired-sidebar-subtree-line-prefix "__")
-  (setq dired-sidebar-theme 'vscode)
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-use-custom-font t))
-
-;; elpy
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 ;; helm
 (require 'helm)
@@ -148,16 +130,8 @@
 
 (helm-mode 1)
 
-
-;; dashboard
-(dashboard-setup-startup-hook)
-(setq dashboard-items '((recents  . 5)
-                        (bookmarks . 5)
-                        (projects . 5)
-                        (registers . 5)))
-
-
 ;; org-mode
+(require 'org-tempo)
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (org-babel-do-load-languages
@@ -290,7 +264,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (py-isort cider clojure-mode-extra-font-locking clojure-mode rainbow-delimiters yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
+    (tagedit dockerfile-mode py-isort cider clojure-mode-extra-font-locking clojure-mode rainbow-delimiters yafolding material-theme subatomic-theme typescript-mode org-jira go-mode berrys-theme multiple-cursors evil org-bullets solarized-theme powerline color-theme-sanityinc-solarized flymake-python-pyflakes jinja2-mode vscode-icon dired-sidebar company-restclient telega org twilight-theme terraform-mode restclient-helm dumb-jump nord-theme use-package ereader peep-dired elfeed neotree elpy ag rjsx-mode nov markdown-mode zenburn-theme flx graphql-mode yaml-mode helm-ag sass-mode color-theme-monokai color-theme-sanityinc-tomorrow company-tern company flycheck json-mode add-node-modules-path web-mode nyan-mode helm-projectile projectile magit paredit)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(peep-dired-cleanup-eagerly t)
  '(pos-tip-background-color "#073642")
